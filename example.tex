@@ -1,55 +1,54 @@
 \documentclass[12pt,oneside]{fithesis2}
-\usepackage[english]{babel}       % Multilingual support
-\usepackage[utf8]{inputenc}       % UTF-8 encoding
-\usepackage[T1]{fontenc}          % T1 font encoding
-\usepackage[                      % A sans serif font that blends well with Palatino
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[
   scaled=0.86
 ]{berasans}
-\usepackage[                      % A tt font if you do not like LM's tt
+\usepackage[
   scaled=1.03
 ]{inconsolata}
-\usepackage[                      % Clickable links
-  plainpages = false,               % We have multiple page numberings
-  pdfpagelabels                     % Generate pdf page labels
+\usepackage[
+  plainpages = false,
+  pdfpagelabels
 ]{hyperref}
-\usepackage{blindtext}            % Lorem ipsum generator
+\usepackage{blindtext}
 
-\thesislang{en}                   % The language of the thesis
-\thesistitle{Sample Thesis}       % The title of the thesis
-\thesissubtitle{Diploma Thesis}  % The type of the thesis
-\thesisstudent{Martin Jordán}          % Your name
-\thesiswoman{true}                % Your gender
-\thesisfaculty{fi}                % Your faculty
-\thesisyear{Spring \the\year}     % The academic term of your thesis defense
-\thesisadvisor{John Foo, Ph.D.}   % Your advisor
+\thesislang{en}
+\thesistitle{Sample Thesis}
+\thesissubtitle{Diploma Thesis}
+\thesisstudent{Martin Jordán}
+\thesiswoman{true}
+\thesisfaculty{fi}
+\thesisyear{Spring \the\year}
+\thesisadvisor{John Foo, Ph.D.}
 
 \begin{document}
-  \FrontMatter                    % The front matter
-    \ThesisTitlePage                % The title page
-    \begin{ThesisDeclaration}       % The declaration
+  \FrontMatter
+    \ThesisTitlePage
+    \begin{ThesisDeclaration}
       \DeclarationText
       \AdvisorName
     \end{ThesisDeclaration}
-    \begin{ThesisThanks}            % The acknowledgements (optional)
+    \begin{ThesisThanks}
       I would like to thank my supervisor\,\dots
     \end{ThesisThanks}
-    \begin{ThesisAbstract}          % The abstract
+    \begin{ThesisAbstract}
       The aim of the bachelor work is to provide\,\dots
     \end{ThesisAbstract}
-    \begin{ThesisKeyWords}          % The keywords
+    \begin{ThesisKeyWords}
       keyword1, keyword2\,\dots
     \end{ThesisKeyWords}
-    \tableofcontents                % The table of contents
-%   \listoftables                   % The list of tables (optional)
-%   \listoffigures                  % The list of figures (optional)
+    \tableofcontents
+%   \listoftables
+%   \listoffigures
   
-  \MainMatter                     % The main matter
-    \chapter{Introduction}          % Chapters
-    \Blindtext
+  \MainMatter
+    \chapter{Introduction}
     \chapter{Another chapter}
     \Blindtext
     \appendix
-    \chapter{First appendix}        % Appendices
+    \chapter{First appendix}
     \Blindtext
     \chapter{Another appendix}
     \Blindtext
