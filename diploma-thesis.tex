@@ -1,0 +1,158 @@
+\documentclass[12pt,oneside]{fithesis2}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage[
+  scaled=0.86
+]{berasans}
+\usepackage[
+  scaled=1.03
+]{inconsolata}
+\usepackage[
+  plainpages = false,
+  pdfpagelabels
+]{hyperref}
+\usepackage[autostyle]{csquotes}
+\usepackage[super]{nth}
+\usepackage{blindtext}
+\setlist[enumerate]{font=\bfseries}
+
+\thesislang{en}
+\thesistitle{Web application for automation in finance department}
+\thesissubtitle{Diploma Thesis}
+\thesisstudent{Bc. Martin Jordán}
+\thesiswoman{true}
+\thesisfaculty{fi}
+\thesisyear{Spring \the\year}
+\thesisadvisor{Ing. Leonard Walletzký, PhD.}
+
+\begin{document}
+  \FrontMatter
+    \ThesisTitlePage
+    \begin{ThesisDeclaration}
+      \DeclarationText
+      \AdvisorName
+    \end{ThesisDeclaration}
+    \begin{ThesisThanks}
+      I would like to thank my supervisor Ing. Leonard Walletzký, PhD. \,\dots
+    \end{ThesisThanks}
+    \begin{ThesisAbstract}
+      This thesis deals with analysing, modelling and automating specific processes in the financial department. The automation will be carried out by a web application that is intended to be used by a very limited number of financial department employees. The first part introduces the company as well as the reasons why this application is being implemented. The rest of the thesis describes the process of designing, implementing and deploying the application.
+    \end{ThesisAbstract}
+    \begin{ThesisKeyWords}
+      24i, Automation, Finance, European Union funding programme, Python, JavaScript, React, GatsbyJS, Serverless, REST API
+    \end{ThesisKeyWords}
+    \tableofcontents
+%   \listoftables
+%   \listoffigures
+  
+  \MainMatter
+    \chapter{Introduction}
+    When assessing whether a company is successful or not, we can look at many different metrics ranging from market share, through the number of products sold over a specific period of time all the way to customer satisfaction. However, there is one metric that stands above all  - financial success. After all, the end goal of every company is to generate, continually increase and maximize profit over a sustained period of time.
+    \par
+    In the early stages of a company, having positive financial results can be difficult to achieve. Sometimes, it is not even seen as the top priority. For startups, growth velocity and market penetration is most important. It helps them increase market share first so that they can build customer base and then use that momentum to maximize profits over the long term.
+    \par
+    Still, for a company to be able to expand rapidly, funds are essential. However, in such an early and growth focused stages, money can be hard to come by even in the years of highest abundance. To accelerate growth, companies are constantly searching for ways to acquire cheap capital.
+    \par
+    To such companies, European Union is offering funding programmes in various areas of expertise. To be able to acquire these programmes, smaller businesses must comply to a strict set of rules set by the European Commission.
+    \par
+    Alternatively, small companies turn to bigger players within the same space to sell them a stake in the company for a financial injection. This can create many different challenges, such as an incompatibility of certain systems the companies are using.
+    \newpage
+    \section{Thesis goals}
+    This thesis aims to solve the two problems described above. First, it is to help the company improve it's financial state by providing insights into employee retention and the effects this has on eligibility for the funding programmes. Second, it is to provide means of reducing workload on accountants by giving them a simple tool they can use to extract financial data from an accounting system that does not support desired tax form format.
+    \section{Thesis structure}
+    The content of this thesis is divided into five chapters. The opening chapter is dedicated to briefly introducing the company. The third chapter covers the methodology of the topic. It also describes the funding programmes in general, as well as explaining why the company is applying for said programmes. Furthermore, information regarding generating the tax forms is provided here. Following that, the next chapter chapter analyzes the processes that are needed to be completed in order to acquire such programme and to submit the tax form as well as details about managing the project. The chapter after that provides a description of the solution. Finally, the last chapter contains and overview of the technologies used to create the user interface, and the implementation and deployment details.
+    \chapter{Company overview}
+    In this chapter, the company this thesis has been created for is briefly introduced. Having a general overview of the company structure is important for understanding the methodology described in the third chapter.
+    \par
+    In late 2019, 24i Unit Media B.V. has been acquired by Amino Technologies plc. \cite{amino} While this does have an impact on various different aspects of the company and it's business, including finance, it does not impact, nor is it needed for this thesis. Hence, further mentions of this are omitted.
+    \section{24i Unit Media B.V.}
+    \section{24i Media CZ s.r.o.}
+    https://www.24i.com/press/24i-media-acquires-mautilus/
+    \section{Mautilus s.r.o.}
+    A short overview of the company history and its business.
+    \chapter{Methodology}
+    In this chapter, the methodology of this thesis is described in order to provide an explanation as to why the selected company is taking part in the funding programmes and what their specific terms and conditions are. Moreover, ... .
+    \par
+    In the first part, the EU funding programmes are introduced. Furthermore, it presents the specific conditions a company has to adhere to in order to be eligible. Finally, there is information as to why the company is applying for the specific programmes. Finally, the annual work unit (AWU) indicator is defined.
+    \section{EU funding programmes}
+    The EU funding programmes are funding opportunities created by the European Commission to help micro, small and medium-sized enterprises (SMEs) gain access to cheap capital through grants, loans and guarantees. The companies can also bid for contracts to provide goods and services.
+    \subsection{Motivation for funding programmes}
+    The Czech Civil Code considers: "A person who, on his own account and responsibility, independently carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit is considered, with regard to this activity, to be an entrepreneur."\cite{entrepreneur-law}
+    \par
+    The quintessential part: "...carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit..." ties in well with the concept of financial leverage.
+    \par
+    While it is entirely possible for a company to be grown organically, it would be pointless to argue against obtaining cheap capital. Therefore, funding programmes make perfect sense form SMEs, because they provide reasonable amount of fairly easily accessible capital, while having no impact on the distribution of the company share.
+    \newline\newline
+    In the document: "Political Guidelines for the next European Commission" from \nth{15} July 2014, Jean-Claude Juncker, a Candidate for President of the European Comission stated the following: \blockquote{"Jobs, growth and investment will only return to Europe if we create the right regulatory environment and promote a climate of entrepreneurship and job creation. We must not stifle innovation and competitiveness with too prescriptive and too detailed regulations, notably when it comes to SMEs. They are the backbone of our economy, creating more than 85\% of new jobs in Europe and we have to free them from burdensome regulation."\cite{juncker-political-guidelines}}
+     by this notion and presents a.
+    \newline\newline
+    Also, in the same document, he wrote: \blockquote{"Beyond that, I will leave other policy areas to the Member States where they are more legitimate and better equipped to give effective policy responses at national, regional or local level, in line with the principles of subsidiarity and proportionality. I want a European Union that is bigger and more ambitious on big things, and smaller and more modest on small things."}
+    This strategy is consistently being applied throughout the Member States of the European union.
+    Together, these present the core idea behind EU funding programmes. An initiative to 
+    \subsection{Company size}
+    \noindent
+    The companies are divided into three categories according to the number of employees and annual turnover:
+    \begin{enumerate}
+        \item Medium-sized enterprise
+        \newline\newline
+        Within the SME category, a medium-sized enterprise is defined as a company which employs fewer than 250 persons and have an annual turnover not exceeding EUR 50 million, and/or an annual balance sheet total not exceeding EUR 43 million.
+        \item Small enterprise
+        \newline\newline
+        A small enterprise is defined as an enterprise which employs fewer than 50 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 10 million.
+        \item Micro-enterprise
+        \newline\newline
+        A micro-enterprise is defined as an enterprise which employs fewer than 10 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 2 million.
+    \end{enumerate}
+    These figures apply to individual companies only. A small company might not qualify for SME status if it has significant additional resources because it is part of a larger group. \cite{eligibility}
+    \subsection{Staff headcount}
+    The headcount corresponds to the number of annual work units (AWU), i.e. the number of persons who worked full-time within the enterprise in question or on its behalf during the entire reference year under consideration. The work of persons who have not worked the full year, the work of those who have worked part-time, regardless of duration, and the work of seasonal workers are counted as fractions of AWU.
+    \newline\newline
+    The staff consists of:
+    \begin{enumerate}[A)]
+        \item employees;
+        \item persons working for the enterprise being subordinated to it and deemed to be employees under national law; 26.6.2014 EN Official Journal of the European Union L 187/71;
+        \item owner-managers;
+    \end{enumerate}
+    Apprentices or students engaged in vocational training with an apprenticeship or vocational training contract are not included as staff. The duration of maternity or parental leaves is not counted. \cite{eligibility}
+    \subsection{Project application}
+    "The company Mautilus, s.r.o. is implementing the project \textit{"New Apps Development in co. Mautilus"}, the goal of which is to develop multi-screen OTT (Over-the-top) applications designated for wide range of platforms that allow to watch video content." \cite{maueusubsidy}
+    \section{Tax forms}
+    This section will include information about accounting system and propose a solution for the not supported tax format.
+    \chapter{Analysis}
+    This chapter will contain models of the processes made by the financial department before and after this solution has been implemented.
+    \section{WBS}
+    \section{Process modeling - BPMN}
+    \chapter{System design}
+    This chapter will give an overview of the technologies used to create the application as well as provide.
+    \section{Technologies}
+    \subsection{Amazon Web Services}
+    \subsection{AWS Amplify}
+    \subsection{AWS Lambda}
+    \subsection{AWS S3}
+    \subsection{AWS Cognito}
+    \subsection{Python}
+    \subsection{REST API}
+    \section{Architecture}
+    \subsection{Serverless}
+    \chapter{Web application}
+    \section{Technologies}
+    \subsection{React}
+    \subsection{GatsbyJS}
+    \subsection{TypeScript}
+    This section will describe the web application architecture.
+    \section{Design}
+    This section will describe the website design.
+    \subsection{User interface}
+    \section{Implementation}
+    This chapter will describe the tools and architecture used to create the serverless application. Also, implementation details will be here.
+    \subsection{Project structure}
+    \subsection{Libraries and tools}
+    \section{Deployment}
+    \subsection{CDN}
+    % Bibliography goes here
+    \bibliographystyle{unsrt}
+    \bibliography{thebibliography}
+    % Index goes here (optional)
+\end{document}
