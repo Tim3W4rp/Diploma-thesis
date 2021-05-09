@@ -13,17 +13,17 @@ scaled=1.03
 plainpages = false,
 pdfpagelabels
 ]{hyperref}
+\usepackage{minted}
 \usepackage[autostyle]{csquotes}
 \usepackage[super]{nth}
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{minted}
 \setlist[enumerate]{font=\bfseries}
 \usepackage{listings}
 \usepackage{color}
 \thesislang{en}
-\thesistitle{Information systems integration and process osptimization in a software company}
+\thesistitle{Information systems integration and process optimization in a software company}
 \thesissubtitle{Diploma Thesis}
 \thesisstudent{Bc. Martin Jordán}
 \thesiswoman{true}
@@ -49,6 +49,8 @@ pdfpagelabels
 \definecolor{lightred}{rgb}{1,0.4,0.5}
 \usepackage{upquote}
 \usepackage{listings}
+\usepackage{biblatex}
+\addbibresource{thebibliography.bib}
 % CSS
 \lstdefinelanguage{CSS}{
 keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},	
@@ -184,7 +186,6 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 %
 \makeatother
 
-
 \begin{document}
 \FrontMatter
 \ThesisTitlePage
@@ -193,120 +194,99 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
   \AdvisorName
 \end{ThesisDeclaration}
 \begin{ThesisThanks}
-  I would like to thank my supervisor Ing. Leonard Walletzký, PhD. for guidance, and for valuable professional and personal insights. Secondly, I would like to thank my wife, Jana Jordánová, who has been a tremendous mental support throughout all of my studies. This thesis would not be possible without the opportunity to work for Mautilus s.r.o. that has been given to me by Mr. Ivan Bradáč. A huge thank you also goes to all of my family members, who have been greatly supportive. Namely, I would like to thank to my father and mother in-law, as without their words of encouragement, I wouldn't be able to finish this thesis. \,\dots
+  I would like to thank my supervisor Ing. Leonard Walletzký, PhD. for guidance, and for valuable professional and personal insights. Secondly, I would like to thank my wife, Jana Jordánová, who has been a tremendous mental support throughout all of my studies. This thesis would not be possible without the opportunity to work for Mautilus s.r.o. that has been given to me by Mr. Ivan Bradáč. A huge thank you also goes to all of my family members, who have been greatly supportive. I would also like to thank my father-in-law and mother-in-law for their words of encouragement.
 \end{ThesisThanks}
+The aim of this thesis is to integrate several systems in the selected company and to analyze and optimize processes in the financial department. Furthermore, it is to provide an evaluation of the added value of such implementation to the company, including the development of specific indicators to map this added value.
 \begin{ThesisAbstract}
-  This thesis deals with analysing, modelling and optimizing processes in the financial department. The subject is to identify obstacles in the processes and to analyze and propose possible solutions. These goals stem from specific needs of a private company, therefore we examine the current state and suggest possible solutions. With the guidance of an indicator used to maximize the added value, we choose one of the processes to automate. Based on the collection of requirements we propose and implement a solution to that process. Finally, we evaluate the added value of our solution. An integral output of this thesis is an application that serves the purpose of automating the chosen process.
+  This thesis deals with analysing, modelling and optimizing processes in the financial department and integrating several systems to improve a selected process. The subject is to analyze the processes, identify their inefficiencies and propose improvements. The stems from specific needs of a private company, therefore we examine the current state and suggest possible solutions. With the guidance of an indicator used to maximize the added value, we choose one of the processes to automate. Based on the collection of requirements we propose and implement a solution to that process. Finally, we evaluate the added value of our solution. An integral output of this thesis is an application that serves the purpose of automating the chosen process.
 \end{ThesisAbstract}
 \begin{ThesisKeyWords}Process modelling, Process optimization, Process automation, Finance, European Union funding programmes
 \end{ThesisKeyWords}
 \tableofcontents
-
 \MainMatter
 \chapter{Introduction}
-When assessing whether a company is successful or not, we can look at many different metrics ranging from market share, through the number of products sold over a specific period of time all the way to customer satisfaction. However, there is one metric that stands above all - financial success. After all, the end goal of every company is to generate, continually increase and maximize profit over a sustained period of time.
+At their core, people are inherently creative beings. We have been creating art since the dawn Since the inception of videography, In the recent years, video streaming services have taken the world by storm. This strong trend has been nothing but accelerated by the world pandemic. Therefore, it is no surprise that new, but also established companies are trying to capture their part of the market.
 \par
-In the early stages, it can be difficult for a company to achieve positive financial results. To accelerate growth, companies are constantly searching for ways to acquire cheap capital, optimize their processes and reduce costs.
+When assessing whether a company is successful or not, we can look at many different metrics ranging from market share, through the number of monthly active users all the way to customer satisfaction. However, there is one general metric that stands above all - financial success. After all, the end goal of every company is to generate, continually increase and maximize profit over a sustained period of time.
+\par
+In the early stages, it can be difficult for a company to achieve positive financial results. To accelerate growth, companies are constantly searching for ways to acquire cheap capital, optimize their processes and reduce costs. One of the ways smaller companies can speed up their growth is to get acquired by a larger company. This inevitably creates additional complexities and side effects that, if not dealt with, may hinder the business in the long run.
 \par
 To drive innovation, European Union is offering funding programmes (sometimes also called calls) to companies in various areas of expertise. To be able to acquire these funds, firms must comply to a strict set of rules set by the European Commission.
-\par
-Additionally, companies turn to bigger players, or form strategic partnerships in order to accelerate growth. This can, however, create additional complexities and side effects, that may not be obvious at first sight.
 \par
 The main idea of this thesis is to analyze, optimize and automate certain tasks to remove unnecessary operational overhead from company employees. Because the complexity differs greatly between the analyzed processes, we will try to provide a common ground on which we can decide which process, if automated, will have the highest overall benefit to the company.
 \newpage
 \section{Thesis goals}
-This thesis aims to tackle the following problems. Specifically, it is to analyze the processes and their subsequent possible automations or systems integrations. One of the goals is to test our hypothesis of which process, if automated, will yield the highest overall results. This inevitably leads us to the indicator we are going to create to to determine whether our hypothesis is correct. Also, by extension, the indicator will point to the added value of this thesis. Finally, it is to implement a solution to the process identified by the indicator.
+This thesis aims to analyze company processes in the financial department, their subsequent automations and possible systems integrations. One of the goals is to test the hypothesis of which one of the processes, if automated, is going to yield the highest overall results. To determine whether our hypothesis is correct we are going to create a common indicator. By extension, this indicator will point to the added value of this thesis. Finally, it is to implement a solution to the process identified by the indicator.
 \section{Thesis structure}
 The content of this paper is divided into seven chapters. The opening chapter serves as an introduction to better understand the domain within which this thesis operates. It describes the EU funding programmes and presents their motivation and goals in general. Furthermore, it introduces important concepts such as company size, job position relevance and annual work unit. The next chapter is dedicated to presenting the methodology of the thesis. The chapter after that analyzes the processes and presents the requirements for automating said processes. Following that, the optimized processes are presented together with some of the technologies used. Finally, the last chapter contains the implementation and deployment details.
-\chapter{Understanding the domain}\label{hypothesis}
-In the following paragraphs, the EU funding programmes domain is presented. The purpose of this is to familiarize the reader with the domain, so they can better understand the added value this thesis aims to provide. At this point we would like to state the hypothesis that we think that the winner will be the implementation of automating the task of calculating the Annual Work Unit.
-\par
-The conducted research is designed to examine the funding programmes, to provide an explanation as to why they are offered by the European Union (EU) in the first place and to identify their limitations and analyze their rules and conditions in order to be able to create a software solution that would help achieve the thesis goals. Also, the reasons why the company is taking part in the selected funding programmes are presented here.
-\par
-The analysis of the limitations and rules is achieved by collecting information from various different sources, including EU regulations, web sites and the Czech Civil Code as well as by interviewing the stakeholders. From a software engineering perspective, this process is called the Business Analysis.\footnote{"Business Analysis (BA) is the practice of enabling change in an organizational context, by defining needs and recommending solutions that deliver value to stakeholders."\cite{business-analysis}}
-\par
-In the first section, the EU funding programmes are introduced. Here, general motivation for the funding programmes is presented. After that, the terms medium-sized, small and micro enterprise together with the staff headcount and relevant and non-relevant job positions are defined. From these, the annual work unit (AWU) indicator is then derived. Furthermore, the specific conditions a company has to adhere to in order to be eligible. Finally, there is information as to why the company is applying for the specific programmes.
-\newpage
-\section{EU funding programmes}
-The EU funding programmes are funding opportunities created by the European Commission to help micro, small and medium-sized enterprises (SMEs) gain access to cheap capital through grants, loans and guarantees. The companies can also bid for contracts to provide goods and services.
-The specific project this thesis deals with is: "The company Mautilus, s.r.o. is implementing the project \textit{"New Apps Development in co. Mautilus"}, the goal of which is to develop multi-screen OTT (Over-the-top) applications designated for wide range of platforms that allow to watch video content." \cite{mau-eu-subsidy}
-\subsection{Motivation for funding programmes}\label{motivation}
-In this chapter, we will have a look at the motivations of both parties, the beneficiaries and benefactors. The former of which is our chosen company.
-The Czech Civil Code considers: "A person who, on his own account and responsibility, independently carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit is considered, with regard to this activity, to be an entrepreneur."\cite{entrepreneur-law}
-\par
-The quintessential part: "...carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit..."\cite{entrepreneur-law} ties in well with the concept of financial leverage. \footnote{"Financial leverage, also known as leverage or trading on equity, refers to the use of debt to acquire additional assets."\cite{financial-leverage}} This concept is often used to accelerate growth.
-\par
-While it is entirely possible for a company to grow organically, it would be pointless to argue against obtaining cheap capital. Even more so, when the company does not have to accrue debt in order to acquire the resources. Therefore, funding programmes make perfect sense for SMEs, because they provide reasonable amounts of fairly accessible capital, while having no impact on the distribution of the company share.
 
-This stands very true for our company as well, as it had received a substantial amount of funds. Not directly disclosed, yet publicly available.\cite{mautilus-funding}
-\newline\newline
-In the document: "Political Guidelines for the next European Commission" from \nth{15} July 2014, Jean-Claude Juncker, a Candidate for President of the European Comission stated the following: \blockquote{"Jobs, growth and investment will only return to Europe if we create the right regulatory environment and promote a climate of entrepreneurship and job creation. We must not stifle innovation and competitiveness with too prescriptive and too detailed regulations, notably when it comes to SMEs. They are the backbone of our economy, creating more than 85\% of new jobs in Europe and we have to free them from burdensome regulation."\cite{juncker-political-guidelines}}
-In the year 2020, maybe more than ever before, we have seen that small businesses are a vital wheel in such a delicate and fragile machine that our economy undoubtedly is. It is not the purpose of this thesis to defend, nor argue against monetary policies and massive fiscal stimulus that we have seen in the past year. If anything, it is to demonstrate that European funds are being put to a good use. These lines portray the appetite European Union has for growth and innovation. Reading this, we can see a clear indication that growth, overall well being and abundance are the main motivators behind these funding calls.
-\newline\newline
-Also, in the same document, Mr. Juncker wrote: \blockquote{"Beyond that, I will leave other policy areas to the Member States where they are more legitimate and better equipped to give effective policy responses at national, regional or local level, in line with the principles of subsidiarity and proportionality. I want a European Union that is bigger and more ambitious on big things, and smaller and more modest on small things."\cite{juncker-political-guidelines}}
-From the first part, we can see that Mr. Juncker has a genuine interest in enabling the Member States invest in their future. He then solidifies this by empowering them to take ownership of their local policies. He does all of this while maintaining a sober approach to such a delicate topic that is public resources.
-
-To summarize, we can say that we see a genuine effort towards allocating public money in a fair and reasonable manner that is sustainable over the long term and helps small businesses grow into flourishing enterprises that solve real world problems. Without a doubt, this is a good enough motivation for such funding programmes to exist.
-
-
-
-\subsection{Company size}
-\noindent
-According to the Commision regulation No.651/2014 \cite[page~70]{eu-commision-regulation} issued by the European Comission, the companies are divided into three categories according to the number of employees and annual turnover:
-\begin{enumerate}
-    \item Medium-sized enterprise
-    \newline\newline
-    Within the SME category, a medium-sized enterprise must have fewer than 250 employees and have an annual turnover not exceeding EUR 50 million, and/or an annual balance sheet not exceeding EUR 43 million.
-    \item Small enterprise
-    \newline\newline
-    A small enterprise is defined as an enterprise which employs fewer than 50 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 10 million.
-    \item Micro-enterprise
-    \newline\newline
-    A micro-enterprise is defined as an enterprise which employs fewer than 10 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 2 million.
-\end{enumerate}
-These figures apply to individual companies only. A small company might not qualify for SME status if it has significant additional resources because it is part of a larger group. \cite{eu-commision-regulation}
-It is imperative for a company applying for a funding programme to fall into one of these three categories. If they don't, they are rejected. Our company falls into the small enterprise category.
-\subsection{Job position relevance}
-When applying for a programme, the relevance of a job position with respect to the project needs to be taken into account. Non-relevant employees are not accounted for in the AWU calculation. Nevertheless, it is useful to have this information.
-
-It is also important to note that only employees working in the office that is listed in the application can be taken into account.\cite[page~30]{czech-rules}
-\subsection*{Relevant (R)}
-Employees, whose qualification and job are directly related to the project in question. (i.e. developers in our case)\cite[page~30]{czech-rules}
-\subsection*{Non-relevant (N)}
-All other employees fall into this category. (i.e. management, sales, accountants etc.)\cite[page~30]{czech-rules}
-\subsection{Annual work unit (AWU)}
-We have established that in order to be eligible for funding, a company has to have a certain amount of employees. Knowing only this would not suffice, as we need to take into account the time our employees have really worked. To enable this fine-grained distinction, European Union introduces the AWU.
-\newline\newline
-The European Comission defines the AWU as:
-\blockquote{"...the number of persons who worked full- time within the enterprise in question or on its behalf during the entire reference year under consideration. The work of persons who have not worked the full year, the work of those who have worked part-time, regardless of duration, and the work of seasonal workers are counted as fractions of AWU."\cite[page~71]{eu-commision-regulation}}
-\newpage
-In practice, this means an employee's contract is represented on a scale from 0 to 1 where 0 means they are either currently not employed (i.e. an employee who resigned) or they have been on an unpaid leave. Conversely, 1 means they are working full time.
-
-This means that the work of employees who have not worked the full year, the work of those who have worked part-time, regardless of the duration and the work of seasonal workers are counted as fractions of AWU.
-
-\newline\newline The staff consists of:
-\begin{enumerate}[A)]
-    \item employees;
-    \item persons working for the enterprise being subordinated to it and deemed to be employees under national law; 26.6.2014 EN Official Journal of the European Union L 187/71;
-    \item owner-managers;
-\end{enumerate}
-Apprentices or students engaged in vocational training with an apprenticeship or vocational training contract are not included as staff. The duration of maternity or parental leaves is not counted. \cite{eu-commision-regulation}
-\chapter{Methodology}
+\chapter{Theoretical framework}
 In order for this thesis to not only seemingly have, but also show the added value, we have applied scientific methodologies to look for similarities and differences between our processes. In our closed environment, where we have a limited number of respondents, we mostly had to make do with opinionated data. Meaning that, to analyze the processes, we have collected the primary data through direct interviews with the employees that perform them.
 
 With that in mind, we focused on qualitative research to be able to describe the processes and put them into models. This helped us identify the positive and negative outcome of dealing, or not dealing with the process automation. 
 
 We applied the quantitative research method to gain insights into the time effort. While we certainly want to enrich the company with valuable insights 
 While specifying the common indicator, we will try to be as objective as possible, letting the data guide us, rather than trying to find something in it.
-\chapter{Analysis and modelling}
-This chapter deals with analysing and modelling three company processes. In the first section, we identify the individual steps that make up these processes, what are their inputs and outputs and how they might affect other areas of the company. Based on this knowledge of these processes, we then identify areas of contact. This will naturally lead us into creating an indicator that will help us identify on which process we should be focusing and how, based on our goals and objectives aforementioned above in the section \ref{motivation}.
-\section{Company processes}
-"A business process consists of a set of activities that are performed in coordination in an organizational and technical environment. These activities jointly realize a business goal. Each business process is enacted by a single organization, but it may interact with business processes performed by other organizations."\cite{weske2007business}
 
+In this chapter, two main methodologies that are commonly used to performing
+\section{Problem}
+\section{Qualitative research}
+Popsat obecně, co to je kvalitativní výzkum a pak konkrétně, jaké otázky jsme pokládali
+\section{Quantitative research}
+Popsat obecně, co je kvantitativní výzkum a pak konkrétně jaká data jsme sbírali
+\section{Business process management}
+This will be a theoretical introduction into business processes and how the company is trying to apply this field of study.
+"A business process consists of a set of activities that are performed in coordination in an organizational and technical environment. These activities jointly realize a business goal. Each business process is enacted by a single organization, but it may interact with business processes performed by other organizations."\cite{weske2007business}
 \par
 Hidden between the lines, there is much more to be found in this definition, than it would seem at the first sight. The one thing that a process also does, that is not mentioned in this definition and is certainly the case with all three of our processes, is that it transforms some input into some output. Let us now describe the processes and create their models with BPMN.\footnote{"Business Process Model and Notation is the standard for business processes diagrams. It is intended to be used directly by the stakeholders who design, manage and realize business processes, but at the same time be precise enough to allow BPMN diagrams to be translated into software process components. BPMN has an easy-to-use flowchart-like notation that is independent of any particular implementation environment."\cite{bpmn}} We will also define their inputs and outputs, which will greatly help us in creating our common indicator.
+\chapter{Process analysis and modelling}
+This chapter deals with analysing and modelling three company processes. In the introductory section, we provide a general overview of the processes within the finance department and how they are related to each other. We identify the individual steps that make up these processes, what are their inputs and outputs and how they might affect other areas of the company. Based on this knowledge of these processes, we then identify areas of contact. This will naturally lead us into creating an indicator that will help us identify on which process we should be focusing and how, based on our goals and objectives aforementioned above in the section \ref{motivation}.
+\section{Systems overview}
+\section{Company processes}
+In the following subsections, we will explore. In order for us to gain a deeper understanding of how
+
+\subsection{Submitting a time sheet}
+In figure~\ref{fig:submit_timesheet} we can see the time sheet submission process - an established standalone procedure. Every employee is expected to carry it out as diligently as possible. It is essential for the data to be accurate, reported in time and accounted against the correct accounts because the company uses the output for invoicing customers, employee payrolls and internal and external financial reporting purposes. The input for this comprises of employee contract, public holidays. It all of the time an employee has spent.
+
+Throughout the workdays, the employees input their hours into Tempo Timesheets. Then, usually at the end of the week, they submit this time sheet for approval but no later than on Monday the following week. The manager reviews this and either approves or requests a change.
+
+However, since it can happen for an employee to have time off only for a few days in a week, the time that has been reported in this time sheet must always be reviewed.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/submit_timesheet.jpg}
+    \caption{Timesheet submission process}
+    \label{fig:submit_timesheet}
+\end{figure}
+
+\subsection{Requesting time off}
+Currently, the company is using three separate systems for planning and tracking employee time. For requesting time off, the company uses BambooHR - a comprehensive HR management tool. To track how employees actually spend their work time, the company uses Tempo Timesheets - an add-on for JIRA software. Lastly, for a yearly time availability outlook and quarterly planning, the company uses a Google documents sheet.
+
+To accommodate for efficient planning, however, this data needs to be synchronized between the two systems.
+
+An employee starts this process by filling out a time off request form in BambooHR. After the submission, the system automatically notifies corresponding manager via an email. The manager then evaluates the request and decides whether to approve or deny it. If he chooses to reject the request, the process is terminated entirely and the system sends an email to the employee notifying them their request has been declined. If the request has been approved, the system notifies the employee and an HR assistant about this. From here, two sub-processes start. In our diagram, we intentionally separate them to illustrate they require interaction between different systems.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/time_off_request.jpg}
+    \caption{Request time off process}
+    \label{fig:time_off_request}
+\end{figure}
+
+In figure~\ref{fig:sync_vacation_to_gdoc}, we can see the data synchronization sub-process. After the HR assistant has received a notification about new time off, they can input this time off into a shared Google documents planning sheet. First, they cross-check the contract length with BambooHR and if there has been a change, they adjust the amount of hours the employee is available for. Finally, they input the the time off itself into the table. After this is done, there is no notification sent to anyone and the only information of the time off being put in is in the sheet's history. Since the sheet contains planning data for all teams, the history gets cluttered and is practically unusable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/sync_vacation_to_gdoc.jpg}
+    \caption{Time off synchronization process}
+    \label{fig:sync_vacation_to_gdoc}
+\end{figure}
 \newpage
-\subsection{Calculating the AWU}
+
+The problem becomes apparent when the need arises to transfer this data to a different system. After time off has been approved by the manager, a worker in the HR department receives an email notification. They then have to go and manually input this data into another system. Moreover, they have to update this data even when a request has been approved, but then subsequently removed due to some unexpected reason. In a sense, the assistant is acting as a synchronizing agent between the two systems.
+
+\subsection{Filling out tax forms}
+\subsection{Calculating annual work unit}
 In the current state, in order to calculate the AWU, an employee has to manually export the data from accounting systems. Then, based on worker capacity, a decision has to be made whether or not to calculate the AWU internally, or outsource it to an external company. Regardless of which route we take, we always end up with a person having to manually copy data from one table to another in order to calculate the AWU. As such, we can say that both of these options are sub-optimal, as one carries workload overhead and the other creates increased costs. Both of which could be put to a better use, if we were to automate at least some parts of the process.
 
 The following figure shows the process of calculating the AWU prior to creation of this thesis. It is clear that there are tasks which can be automated.
@@ -319,36 +299,20 @@ The following figure shows the process of calculating the AWU prior to creation 
 
 In this process, we are transforming an input - the history of our employee contracts into an output - annual work unit. Since we are doing it manually, we are also investing employee's time and subsequently, financial resources. 
 
-Following what has been said in section \ref{motivation}, while keeping in mind this input -> output logic, we can already see that this process is going to be a hard contender when it comes to the return on investment. However, let's not get ahead of ourselves.
+Following what has been said in section \ref{motivation}, while keeping in mind this input -> output logic, we can already see that this process is going to be a hard contender when it comes to the return on investment.
 
-\subsection{Data synchronization}
-This section describes the process of requesting time off and it's sub-process, that could be dubbed a "sub-problem". This problem has been created by using two separate systems for handling time reporting.
 
-The first system, BambooHR is used for requesting time off. The second one, Tempo Timesheets is used to keep track of how employees spend their time. This data is then used for invoicing and other financial purposes. To accommodate for efficient planning, however, this data needs to be synchronized between the two systems.
-
-From an employee's or manager's perspective, the process of requesting time off is fairly straightforward and does not require any steps that would be much of an issue when it comes to time spent on the tasks.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{before_sys_integration.png}
-    \caption{Process of requesting time off}
-    \label{fig:before_sys_integration}
-\end{figure}
-\newpage
-The problem becomes apparent when the need arises to transfer this data to a different system. After time off has been approved by the manager, a worker in the HR department receives an email notification. They then have to go and manually input this data into another system. Moreover, they have to update this data even when a request has been approved, but then subsequently removed due to some unexpected reason. In a sense, the assistant is acting as a synchronizing agent between the two systems.
 
 \section{Common indicator}
 Let us define our common indicator as 
 Even though our processes overlap in some areas
 Because we will be dealing with two different processes, we need to establish some common indicator we can use to decide which process would be the most valuable to focus on. Since
 
-
-
 \subsection{Time effort}
 Until this thesis has been created, all of these processes were being carried out manually by employees. This leads us to our first part of the indicator, time.
 More specifically, two types of time:
 An argument could be made against this that certain employees work faster than others and it might even sound right. In general, we want to have the best performing employees
-
-\newline\newline
+~\\\newline
 We can see two concepts emerging from analyzing this process:
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -375,12 +339,7 @@ In comparison to costs, gains are always potential, until they are realized.
 \section{Summary}
 To recapitulate, we have identified three different indicators. While they do provide some insight into which only when combined, create a meaningful and concise interpretation of 
 
-
-
-
-
-
-\chapter{Proposed optimizations and automations}
+\chapter{Possible improvements}
 Now that we have established the current state and analyzed what parts of the processes can be improved, we are going to propose a solution to these problems.
 \section{Calculating the AWU}
 
@@ -391,7 +350,7 @@ Now that we have established the current state and analyzed what parts of the pr
     \label{fig:after_automation}
 \end{figure}
 
-\section{Solutions for requesting a vacation}
+\section{Solutions for requesting time off}
 Tady bude popsaná integrace včetně typů volna
 
 For this integration, we are looking to 
@@ -423,11 +382,7 @@ Across both systems, the company is using four types of leaves:
 \end{enumerate}
 It is important that we keep these in mind, as they are the deciding factor for the solution we are eventually going to use. These types come into play later in the process, when accounting is being done. Hence, we cannot simply merge them into one leave.
 
-
-
 BambooHR is all-in-one HR software made for small and medium businesses. The software makes it easy to collect, maintain, and analyze employee data, on-board new employees, manage compensation, and develop your company culture.\cite{bambooHR}
-
-
 
 In BambooHR, we are looking for: 
 
@@ -457,6 +412,79 @@ Now that we have all of the possible solutions we can compare them and determine
 
 Based on the comparisons we've we can now safely say that our initial hypothesis at the beginning of chapter \ref{hypothesis} was correct.
 
+\chapter{Business requirements}\label{hypothesis}
+---(obsolete Intro)---
+In the following paragraphs, the EU funding programmes domain is presented. The purpose of this is to familiarize the reader with the domain, so they can better understand the added value this thesis aims to provide. At this point we would like to state the hypothesis that we think that the winner will be the implementation of automating the task of calculating the Annual Work Unit.
+\par
+The conducted research is designed to examine the funding programmes, to provide an explanation as to why they are offered by the European Union (EU) in the first place and to identify their limitations and analyze their rules and conditions in order to be able to create a software solution that would help achieve the thesis goals. Also, the reasons why the company is taking part in the selected funding programmes are presented here.
+\par
+The analysis of the limitations and rules is achieved by collecting information from various different sources, including EU regulations, web sites and the Czech Civil Code as well as by interviewing the stakeholders. From a software engineering perspective, this process is called the Business Analysis.\footnote{"Business Analysis (BA) is the practice of enabling change in an organizational context, by defining needs and recommending solutions that deliver value to stakeholders."\cite{business-analysis}}
+\par
+In the first section, the EU funding programmes are introduced. Here, general motivation for the funding programmes is presented. After that, the terms medium-sized, small and micro enterprise together with the staff headcount and relevant and non-relevant job positions are defined. From these, the annual work unit (AWU) indicator is then derived. Furthermore, the specific conditions a company has to adhere to in order to be eligible. Finally, there is information as to why the company is applying for the specific programmes.
+\newpage
+The EU funding programmes are funding opportunities created by the European Commission to help micro, small and medium-sized enterprises (SMEs) gain access to cheap capital through grants, loans and guarantees. The companies can also bid for contracts to provide goods and services.
+The specific project this thesis deals with is: "The company Mautilus, s.r.o. is implementing the project \textit{"New Apps Development in co. Mautilus"}, the goal of which is to develop multi-screen OTT (Over-the-top) applications designated for wide range of platforms that allow to watch video content." \cite{mau-eu-subsidy}
+\section{(obsolete) Motivation for funding programmes}\label{motivation}
+In this chapter, we will have a look at the motivations of both parties, the beneficiaries and benefactors. The former of which is our chosen company.
+The Czech Civil Code considers: "A person who, on his own account and responsibility, independently carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit is considered, with regard to this activity, to be an entrepreneur."\cite{entrepreneur-law}
+\par
+The quintessential part: "...carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit..."\cite{entrepreneur-law} ties in well with the concept of financial leverage. \footnote{"Financial leverage, also known as leverage or trading on equity, refers to the use of debt to acquire additional assets."\cite{financial-leverage}} This concept is often used to accelerate growth.
+\par
+While it is entirely possible for a company to grow organically, it would be pointless to argue against obtaining cheap capital. Even more so, when the company does not have to accrue debt in order to acquire the resources. Therefore, funding programmes make perfect sense for SMEs, because they provide reasonable amounts of fairly accessible capital, while having no impact on the distribution of the company share.
+
+This stands very true for our company as well, as it had received a substantial amount of funds. Not directly disclosed, yet publicly available.\cite{mautilus-funding}
+\newline\newline
+In the document: "Political Guidelines for the next European Commission" from \nth{15} July 2014, Jean-Claude Juncker, a Candidate for President of the European Comission stated the following: \blockquote{"Jobs, growth and investment will only return to Europe if we create the right regulatory environment and promote a climate of entrepreneurship and job creation. We must not stifle innovation and competitiveness with too prescriptive and too detailed regulations, notably when it comes to SMEs. They are the backbone of our economy, creating more than 85\% of new jobs in Europe and we have to free them from burdensome regulation."\cite{juncker-political-guidelines}}
+In the year 2020, maybe more than ever before, we have seen that small businesses are a vital wheel in such a delicate and fragile machine that our economy undoubtedly is. It is not the purpose of this thesis to defend, nor argue against monetary policies and massive fiscal stimulus that we have seen in the past year. If anything, it is to demonstrate that European funds are being put to a good use. These lines portray the appetite European Union has for growth and innovation. Reading this, we can see a clear indication that growth, overall well being and abundance are the main motivators behind these funding calls.
+\newline\newline
+Also, in the same document, Mr. Juncker wrote: \blockquote{"Beyond that, I will leave other policy areas to the Member States where they are more legitimate and better equipped to give effective policy responses at national, regional or local level, in line with the principles of subsidiarity and proportionality. I want a European Union that is bigger and more ambitious on big things, and smaller and more modest on small things."\cite{juncker-political-guidelines}}
+From the first part, we can see that Mr. Juncker has a genuine interest in enabling the Member States invest in their future. He then solidifies this by empowering them to take ownership of their local policies. He does all of this while maintaining a sober approach to such a delicate topic that is public resources.
+
+To summarize, we can say that we see a genuine effort towards allocating public money in a fair and reasonable manner that is sustainable over the long term and helps small businesses grow into flourishing enterprises that solve real world problems. Without a doubt, this is a good enough motivation for such funding programmes to exist.
+
+\section{Company size}
+\noindent
+According to the Commision regulation No.651/2014 \cite[page~70]{eu-commision-regulation} issued by the European Comission, the companies are divided into three categories according to the number of employees and annual turnover:
+\begin{enumerate}
+    \item Medium-sized enterprise
+    \newline\newline
+    Within the SME category, a medium-sized enterprise must have fewer than 250 employees and have an annual turnover not exceeding EUR 50 million, and/or an annual balance sheet not exceeding EUR 43 million.
+    \item Small enterprise
+    \newline\newline
+    A small enterprise is defined as an enterprise which employs fewer than 50 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 10 million.
+    \item Micro-enterprise
+    \newline\newline
+    A micro-enterprise is defined as an enterprise which employs fewer than 10 persons and whose annual turnover and/or annual balance sheet total does not exceed EUR 2 million.
+\end{enumerate}
+These figures apply to individual companies only. A small company might not qualify for SME status if it has significant additional resources because it is part of a larger group. \cite{eu-commision-regulation}
+It is imperative for a company applying for a funding programme to fall into one of these three categories. If they don't, they are rejected. Our company falls into the small enterprise category.
+\section{Job position relevance}
+When applying for a programme, the relevance of a job position with respect to the project needs to be taken into account. Non-relevant employees are not accounted for in the AWU calculation. Nevertheless, it is useful to have this information.
+
+It is also important to note that only employees working in the office that is listed in the application can be taken into account.\cite[page~30]{czech-rules}
+\section*{Relevant (R)}
+Employees, whose qualification and job are directly related to the project in question. (i.e. developers in our case)\cite[page~30]{czech-rules}
+\section*{Non-relevant (N)}
+All other employees fall into this category. (i.e. management, sales, accountants etc.)\cite[page~30]{czech-rules}
+\section{Annual work unit (AWU)}
+We have established that in order to be eligible for funding, a company has to have a certain amount of employees. Knowing only this would not suffice, as we need to take into account the time our employees have really worked. To enable this fine-grained distinction, European Union introduces the AWU.
+\newline\newline
+The European Comission defines the AWU as:
+\blockquote{"...the number of persons who worked full- time within the enterprise in question or on its behalf during the entire reference year under consideration. The work of persons who have not worked the full year, the work of those who have worked part-time, regardless of duration, and the work of seasonal workers are counted as fractions of AWU."\cite[page~71]{eu-commision-regulation}}
+\newpage
+In practice, this means an employee's contract is represented on a scale from 0 to 1 where 0 means they are either currently not employed (i.e. an employee who resigned) or they have been on an unpaid leave. Conversely, 1 means they are working full time.
+
+This means that the work of employees who have not worked the full year, the work of those who have worked part-time, regardless of the duration and the work of seasonal workers are counted as fractions of AWU.
+
+~\\\newline
+The staff consists of:
+\begin{enumerate}[A)]
+    \item employees;
+    \item persons working for the enterprise being subordinated to it and deemed to be employees under national law; 26.6.2014 EN Official Journal of the European Union L 187/71;
+    \item owner-managers;
+\end{enumerate}
+Apprentices or students engaged in vocational training with an apprenticeship or vocational training contract are not included as staff. The duration of maternity or parental leaves is not counted. \cite{eu-commision-regulation}
+
 \chapter{Implementation}
 Now, we will describe the implementation. The chapter can be divided into four main sections:
 \begin{enumerate}
@@ -467,12 +495,11 @@ Now, we will describe the implementation. The chapter can be divided into four m
     \item Data manipulations
 \end{enumerate}
 
-
 Because we are creating an application that is both front-facing and back-end oriented at the same time, it is important that we choose technologies that are mature and up to date.
 When it comes to creating user interfaces, the ease of use and simplicity is very important both for the user and the developer. Because of this, I chose to use AWS Amplify in combination with GatsbyJS and React. Together, these three technologies make up the core of the front-end application. Amplify provides the infrastructure, GatsbyJS the routing and site generation and React ties it all together. Last but not least, we also want for the application to look at least somewhat decent and so we will also use component libraries to achieve a flat and pleasing look, stylized in company colors.
 
 \section{Technologies}
-The company is executing on it's mission to: "Innovate the way video-lovers discover, watch, and experience great content."\cite{24i-mission} by using the latest and greatest technologies that are available on the market. To build it's infrastructure and services, the company has chosen to use Amazon Web Services (AWS). Because of this, it only made sense to also use AWS in this thesis.
+The company is executing on it's mission to: "Innovate the way video-lovers discover, watch, and experience great content."\cite{24iMission} by using the latest and greatest technologies that are available on the market. To build it's infrastructure and services, the company has chosen to use Amazon Web Services (AWS). Because of this, it only made sense to also use AWS in this thesis.
 
 The intent of this chapter is to provide a brief overview of the core technologies used in this thesis. More importantly, however, this list serves to demonstrate how these technologies have helped to achieve the thesis goals.
 
@@ -669,7 +696,6 @@ ID & Surname & Name & Type & January & February & ... & December \\
 
 readPrivateFile To retrieve the files with this data, we have the following portion of python code. It fetches the file from an S3 bucket based on the company and the year that is provided to it.
 
-
 \begin{minted}{python}
 def read_private_csv(company, year):
     key = '{}/{}/{}.csv'.format(my_prefix, company, year)
@@ -679,7 +705,7 @@ def read_private_csv(company, year):
     rename_cols(4, df, '/{}'.format(year))
     df = df[df['Osobní číslo'].notna()].fillna(0)
     return df
-\end{minted}{python}
+\end{minted}
 
 \subsection{Data manipulations}
 The following snippet is the most important part of the python code. It takes a dataframe and an array of months in the format of: "MONTH/YEAR" and iterates over all "monthyears" to compute the average annual work unit for each month. After this, there are some more transformations to manipulate the data into output format.
@@ -713,7 +739,7 @@ def get_averages(df, all_months):
         else:
             n_valid.append(True)
     return [all_months, relevant, non_relevant, n_valid, r_averages]
-\end{minted}{python}
+\end{minted}
 
 \subsection{Output data}
 The following is the structure in which the data is presented to the user. The number this has all been done for is in the "1 year R average" column.
@@ -736,12 +762,13 @@ As a part of this thesis, we have implemented automation for calculating the AWU
 When it comes to the integration of Jira Temposheets and BambooHR, there is some attentiveness for this to be implemented, but because the current solution to the problem doesn't create any necessary costs, there is little to interest in doing so early.
 
 Finally, no decision has yet been made on the matter of the tax forms process, as the department has recently undergone major restructuring. From a financial perspective, the tax forms process makes more sense to take precedence, as accounting department positions are generally better paying than assistants. Moreover, there is clearly a high amount of workload that could be better spent elsewhere, should this integration materialize.
-
+\chapter{Process automation evaluation}
 \chapter{Conclusion}
 The goal of this thesis was to analyze, model and identify possible optimizations and automations of three processes within the company. To better understand the value hidden underneath the possible process automations, we have developed a common indicator. This indicator has proved to be successful at determining which process to automate.
 
 This thesis is a part of my so far, 2 year long employment contract with the company Mautilus s.r.o. Because I started on a part-time contract as a student, there has always been the the option, or rather almost an obligation, to create my thesis for the at the company. After all, it was one of the topics we discussed at the job interview. Since the beginning, I've been interested in helping the company be more efficient and I hope this thesis is a testament to that effort.
-\bibliographystyle{unsrt}
-\bibliography{thebibliography}
+\printbibliography
 \listoffigures
 \end{document}
+
+
