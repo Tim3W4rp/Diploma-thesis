@@ -205,7 +205,7 @@ The aim of this thesis is to integrate several systems in the selected company a
 \tableofcontents
 \MainMatter
 \chapter{Introduction}
-At their core, people are inherently creative beings. We have been creating art since the dawn Since the inception of videography, In the recent years, video streaming services have taken the world by storm. This strong trend has been nothing but accelerated by the world pandemic. Therefore, it is no surprise that new, but also established companies are trying to capture their part of the market.
+In the recent years, video streaming services have taken the world by storm. This strong trend has been nothing but accelerated by the world pandemic. Therefore, it is no surprise that new, but also established companies are trying to capture their part of the market.
 \par
 When assessing whether a company is successful or not, we can look at many different metrics ranging from market share, through the number of monthly active users all the way to customer satisfaction. However, there is one general metric that stands above all - financial success. After all, the end goal of every company is to generate, continually increase and maximize profit over a sustained period of time.
 \par
@@ -229,42 +229,90 @@ We applied the quantitative research method to gain insights into the time effor
 While specifying the common indicator, we will try to be as objective as possible, letting the data guide us, rather than trying to find something in it.
 
 In this chapter, two main methodologies that are commonly used to performing
-\section{Problem}
-\section{Qualitative research}
+
+\section{Conducted research}
 Popsat obecně, co to je kvalitativní výzkum a pak konkrétně, jaké otázky jsme pokládali
-\section{Quantitative research}
 Popsat obecně, co je kvantitativní výzkum a pak konkrétně jaká data jsme sbírali
 \section{Business process management}
 This will be a theoretical introduction into business processes and how the company is trying to apply this field of study.
 "A business process consists of a set of activities that are performed in coordination in an organizational and technical environment. These activities jointly realize a business goal. Each business process is enacted by a single organization, but it may interact with business processes performed by other organizations."\cite{weske2007business}
 \par
 Hidden between the lines, there is much more to be found in this definition, than it would seem at the first sight. The one thing that a process also does, that is not mentioned in this definition and is certainly the case with all three of our processes, is that it transforms some input into some output. Let us now describe the processes and create their models with BPMN.\footnote{"Business Process Model and Notation is the standard for business processes diagrams. It is intended to be used directly by the stakeholders who design, manage and realize business processes, but at the same time be precise enough to allow BPMN diagrams to be translated into software process components. BPMN has an easy-to-use flowchart-like notation that is independent of any particular implementation environment."\cite{bpmn}} We will also define their inputs and outputs, which will greatly help us in creating our common indicator.
-\chapter{Process analysis and modelling}
-This chapter deals with analysing and modelling three company processes. In the introductory section, we provide a general overview of the processes within the finance department and how they are related to each other. We identify the individual steps that make up these processes, what are their inputs and outputs and how they might affect other areas of the company. Based on this knowledge of these processes, we then identify areas of contact. This will naturally lead us into creating an indicator that will help us identify on which process we should be focusing and how, based on our goals and objectives aforementioned above in the section \ref{motivation}.
-\section{Systems overview}
-\section{Company processes}
-In the following subsections, we will explore. In order for us to gain a deeper understanding of how
 
-\subsection{Submitting a time sheet}
-In figure~\ref{fig:submit_timesheet} we can see the time sheet submission process - an established standalone procedure. Every employee is expected to carry it out as diligently as possible. It is essential for the data to be accurate, reported in time and accounted against the correct accounts because the company uses the output for invoicing customers, employee payrolls and internal and external financial reporting purposes. The input for this comprises of employee contract, public holidays. It all of the time an employee has spent.
+\chapter{Analysis and process modelling}
+This chapter deals with analysing and modelling company processes. In the introductory section, we provide a general overview of the processes within the finance department and how they interact with different systems.
 
-Throughout the workdays, the employees input their hours into Tempo Timesheets. Then, usually at the end of the week, they submit this time sheet for approval but no later than on Monday the following week. The manager reviews this and either approves or requests a change.
+We identify the individual steps that make up these processes, what are their inputs and outputs and how they might affect other areas of the company.
 
-However, since it can happen for an employee to have time off only for a few days in a week, the time that has been reported in this time sheet must always be reviewed.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/submit_timesheet.jpg}
-    \caption{Timesheet submission process}
-    \label{fig:submit_timesheet}
-\end{figure}
-
-\subsection{Requesting time off}
-Currently, the company is using three separate systems for planning and tracking employee time. For requesting time off, the company uses BambooHR - a comprehensive HR management tool. To track how employees actually spend their work time, the company uses Tempo Timesheets - an add-on for JIRA software. Lastly, for a yearly time availability outlook and quarterly planning, the company uses a Google documents sheet.
+//Based on this knowledge of these processes, we then identify areas of contact. This will naturally lead us into creating an indicator that will help us identify on which process we should be focusing and how, based on our goals and objectives aforementioned above in the section \ref{motivation}.
 
 To accommodate for efficient planning, however, this data needs to be synchronized between the two systems.
 
-An employee starts this process by filling out a time off request form in BambooHR. After the submission, the system automatically notifies corresponding manager via an email. The manager then evaluates the request and decides whether to approve or deny it. If he chooses to reject the request, the process is terminated entirely and the system sends an email to the employee notifying them their request has been declined. If the request has been approved, the system notifies the employee and an HR assistant about this. From here, two sub-processes start. In our diagram, we intentionally separate them to illustrate they require interaction between different systems.
+\section{Systems overview}
+In this section, we describe the systems the company uses to carry out daily operations and corresponding processes. Our focus here is on identifying the systems capabilities and recognizing the interactions between them. Currently, the company uses three separate systems for planning and tracking employee time. All of these systems have been in place since the two companies have merged.
+\subsection*{BambooHR}
+All-in-one HR software designed for small and medium businesses that makes it easy to collect, maintain, and analyze employee data, on-board new employees, manage compensations, and develop company culture.\cite{bambooHR} For us, it is important to know that this system enables employees to request time off and stores information about their contracts.
+\subsection*{JIRA}
+A comprehensive management suite for software development. It covers time planning, project roadmaps, issue tracking, release management and much more. The company currently uses JIRA server where the instance runs on their hardware. To track how employees actually spend their work time, the company uses Tempo Timesheets - an add-on for JIRA software.
+\subsection*{Google Sheets}
+A free cloud-based tool for creating and sharing cell-based tables. The company uses this for a yearly time availability outlook and quarterly planning. This is a solution the company started using during merging of two companies together. At that time, it seemed like a cheap and easy solution.
+\subsection{Systems data flows}
+In figure~\ref{fig:systems_dfd} we can see how the data flows from actors, through processes into respective systems. The idea here is to get a good grasp on the inputs and outputs for each of the processes and also to see the direction of the data flows with regards to the systems.
+
+Any record of time being spent, be it time off or regular working hours is created by an employee.
+
+For requesting time off, the input is one or more specific dates. After passing through the time off request process, this data is stored in BambooHR.
+
+For submitting a time sheet, the time is accounted for on a per-task basis and enriched with complementary information. Specifically - to which project, issue and account the time belongs to. This data is then stored in JIRA.
+
+To calculate the AWU, the finance controller has to take time sheets data from JIRA and contracts data from BambooHR.
+
+In order for the assistant to synchronize the time off data they need to retrieve it from BambooHR and input it into Google documents planning sheet.
+
+Finally, when planning, the managers consult the planning sheet for availability.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/systems_dfd.jpg}
+    \caption{Systems data flow diagram}
+    \label{fig:systems_dfd}
+\end{figure}
+
+\section{Time reporting and planning}
+In this section, we describe what happens when an employee wants to request time off and the effects it has on time reporting and regular planning meetings. First, we take a look at the procedure from broader perspective to gain a better understanding about how the processes influence each other. Then, we look at the sub-processes in more detail.
+
+???Because the sub-processes are performed within different systems, they can be, and usually are, performed asynchronously.
+
+The first key point of this process is that there are three different starting points. It can either start periodically every week - typically on Friday afternoon, when an employee wants to request some time off or when they have scheduled time off and want to cancel it. Depending on this, we get three different flows.
+
+Using this approach, we want to demonstrate the fact that requesting time off can have impact on time sheet submission. For example - if an employee has a full week of vacation, it makes sense to submit their hours into both systems at once. Another example would be if an employee were in the middle of a vacation and suddenly decided to cancel the rest of it. Although not very common, these edge cases create unnecessary operational overhead. Furthermore, missing someone's vacation could potentially lead to inaccurate planning.
+
+If this process is initiated by the regular weekly time reporting obligation, 
+
+If an employee wants to request time off, they start by initiating the time off request process. The completion of this step leads to two things. Firstly, a notification is sent to an HR assistant triggering the synchronize data process.  This is essentially an asynchronous process, meaning that the ongoing process . This creates subsequent issues like the need for someone to be 
+
+Secondly, the possibility to cancel a time off request arises. Choosing not to cancel the time off request leads to the time sheet submission process.
+
+However, this diagram is not to be taken as a process that would be in accordance with our process definition and the BPMN standard. In this instance, we are just using the BPMN to explain the relationships more easily.
+
+
+If the process starts 
+
+If the process starts with an employee wanting time off, then it can have an impact on the output of the submit time sheet sub-process.
+
+The figure shows 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/time_reporting.jpg}
+    \caption{Time reporting}
+    \label{fig:time_reporting}
+\end{figure}
+
+As we can see, there are many issues with the current state
+
+\subsection*{Request time off}
+In the diagram~\ref{fig:time_off_request} we can see the time off request process. An employee starts this process by submitting a time off request form in BambooHR. The input for this form is simply the amount of days and the type of time off the employee wants to request. After the request submission, the system automatically notifies corresponding manager via an email. The manager evaluates the request and decides whether to approve or deny it. If he chooses to reject the request, the process is terminated entirely and the system sends an email to the employee notifying them their request has been declined. If the request is approved, the system notifies the employee and an assistant about this.
 
 \begin{figure}[H]
     \centering
@@ -273,7 +321,31 @@ An employee starts this process by filling out a time off request form in Bamboo
     \label{fig:time_off_request}
 \end{figure}
 
-In figure~\ref{fig:sync_vacation_to_gdoc}, we can see the data synchronization sub-process. After the HR assistant has received a notification about new time off, they can input this time off into a shared Google documents planning sheet. First, they cross-check the contract length with BambooHR and if there has been a change, they adjust the amount of hours the employee is available for. Finally, they input the the time off itself into the table. After this is done, there is no notification sent to anyone and the only information of the time off being put in is in the sheet's history. Since the sheet contains planning data for all teams, the history gets cluttered and is practically unusable.
+\subsection*{Cancel time off}
+In some cases, it can happen that an employee wishes to cancel scheduled time off. Both \textit{approved} and \textit{pending for approval} time off requests can be canceled by the employee as long as the time of the leave is in the future. If not, the manager needs to delete such request by himself. This constraint is in place to protect time planning.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/cancelling_time_off.jpg}
+    \caption{Cancel time off}
+    \label{fig:cancelling_time_off}
+\end{figure}
+
+\newpage
+\subsection*{Submitting a time sheet}
+In figure~\ref{fig:submit_timesheet} we can see the time sheet submission process - a standalone procedure that does not necessarily rely on being part of our time reporting diagram. The upper boundary for the input is defined by the employee's contract - sometimes also referred to as FTE. The main component is the time an employee spends working. Furthermore, vacation, special leave, public holidays, birthdays and other types of time off need to be included in this time sheet. It is essential for the output of this process to be accurate, reported in time and accounted against the correct accounts because the company uses the output for invoicing customers, employee payrolls and internal and external financial reporting purposes.
+
+Throughout the day, employees input their hours into Tempo Timesheets. Then, usually at the end of the week, they submit this time sheet for approval but no later than on Monday the following week. The manager reviews this and either approves or requests a change. If he requests a change, a notification is sent to the employee, they make adjustments and re-submit the sheet. If the manager approves, the process finishes by again notifying the employee their time sheet has been approved.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/submit_timesheet.jpg}
+    \caption{Timesheet submission process}
+    \label{fig:submit_timesheet}
+\end{figure}
+\newpage
+\subsection*{Synchronizing time off data}
+In figure~\ref{fig:sync_vacation_to_gdoc}, we can see the data synchronization sub-process. This starts when an HR assistant receives an email with time off data. This can either be new time off or existing time off being canceled. First, they need to check whether there has been a contract change. If yes, they proceed to adjust the FTE. After this, they can synchronize the time off into the planning sheet.
 
 \begin{figure}[H]
     \centering
@@ -281,16 +353,16 @@ In figure~\ref{fig:sync_vacation_to_gdoc}, we can see the data synchronization s
     \caption{Time off synchronization process}
     \label{fig:sync_vacation_to_gdoc}
 \end{figure}
+After this is done, there is no notification sent to anyone and the only information of the time off being put in the planning sheet is in the sheet's history. Since the sheet contains planning data for all teams, the history gets cluttered and is practically unusable.
 \newpage
+---The problem becomes apparent when the need arises to transfer this data to a different system. After time off has been approved by the manager, a worker in the HR department receives an email notification. They then have to go and manually input this data into another system. Moreover, they have to update this data even when a request has been approved, but then subsequently removed due to some unexpected reason. In a sense, the assistant is acting as a synchronizing agent between the two systems.---
 
-The problem becomes apparent when the need arises to transfer this data to a different system. After time off has been approved by the manager, a worker in the HR department receives an email notification. They then have to go and manually input this data into another system. Moreover, they have to update this data even when a request has been approved, but then subsequently removed due to some unexpected reason. In a sense, the assistant is acting as a synchronizing agent between the two systems.
 
-\subsection{Filling out tax forms}
-\subsection{Calculating annual work unit}
+\section{Calculating annual work unit}
 In the current state, in order to calculate the AWU, an employee has to manually export the data from accounting systems. Then, based on worker capacity, a decision has to be made whether or not to calculate the AWU internally, or outsource it to an external company. Regardless of which route we take, we always end up with a person having to manually copy data from one table to another in order to calculate the AWU. As such, we can say that both of these options are sub-optimal, as one carries workload overhead and the other creates increased costs. Both of which could be put to a better use, if we were to automate at least some parts of the process.
 
 The following figure shows the process of calculating the AWU prior to creation of this thesis. It is clear that there are tasks which can be automated.
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{before_automation.png}
     \caption{Process before automation}
@@ -301,46 +373,65 @@ In this process, we are transforming an input - the history of our employee cont
 
 Following what has been said in section \ref{motivation}, while keeping in mind this input -> output logic, we can already see that this process is going to be a hard contender when it comes to the return on investment.
 
-
-
-\section{Common indicator}
-Let us define our common indicator as 
-Even though our processes overlap in some areas
-Because we will be dealing with two different processes, we need to establish some common indicator we can use to decide which process would be the most valuable to focus on. Since
-
-\subsection{Time effort}
-Until this thesis has been created, all of these processes were being carried out manually by employees. This leads us to our first part of the indicator, time.
-More specifically, two types of time:
-An argument could be made against this that certain employees work faster than others and it might even sound right. In general, we want to have the best performing employees
-~\\\newline
-We can see two concepts emerging from analyzing this process:
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item How long is it going to take?
-    \item How much time can we save if we don't do it?
-\end{itemize}
-
-Certainly, a number of follow up questions pop-up as soon as we ask these two. 
-
-
-\subsection{Costs}
-While the time effort can sometimes get unpredictable, we would generally not expect employee wage to fluctuate 
-
-\subsection{Potential gains}
-In comparison to costs, gains are always potential, until they are realized. 
-
-
-\section{Mapping indicator to processes}
-\subsection{Calculating the AWU}
-
-\subsection{Data synchronization}
-
-\subsection{Filling out tax forms}
 \section{Summary}
-To recapitulate, we have identified three different indicators. While they do provide some insight into which only when combined, create a meaningful and concise interpretation of 
+We are looking for ways to simplify these processes in the company. The main pain point in the time reporting workflow is that the time off data does not synchronize between the systems automatically. This creates fragmentation and requires constant input from HR assistants and also an unnecessarily high amount of attention from employees and managers. Because the planning sheet is not integrated within the issue tracking system (JIRA) there is no simple way for the finance department to map the planned time to specific outputs. This also attributes to the lack of visibility on when new features will be delivered. Finally, it makes it hard to compare between planned time and actual time spent.
+
+The second problem we see is with calculating the annual work unit. 
 
 \chapter{Possible improvements}
-Now that we have established the current state and analyzed what parts of the processes can be improved, we are going to propose a solution to these problems.
+With the increasing focus on providing software services Suggested solution should 
+
+\section{Time reporting and planning}
+To improve the time reporting and planning, we need to eliminate several impediments. First, we we need to make sure that time off is synchronized across all systems at all times. We are looking for a solution that makes one of the systems into a single source of truth from which the data propagates to other systems. Since the time off request starts in BambooHR, it makes sense to start exploring our possibilities there.
+
+First, we take a look at some of the solutions that are currently available in the market and determine whether or not they are viable for our use case. The internet search for keywords: "Tempo Timesheets BambooHR integration" leads us to investigating following services:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item blendr.io 
+    \item zapier
+    \item BambooHR Integration for Jira
+\end{itemize}
+
+After reviewing these products, we came to the conclusion that the first two would not be viable options. Blendr \cite{blendr} Zapier does provide a trigger for new time off, however, there is no way of dealing with the request type. Moreover, there was no action that would correspond to our requirement of adding time to specific ticket.\cite{zapier}
+
+\subsection*{Custom API integration}
+Because all of the current systems provide API access, there is also the possibility to create a fully custom integration.
+
+
+Vytvářet úplně custom řešení nedává smysl, protože problematika je rozsáhlejší, než se na první pohled zdálo. Navíc by ve výsledku bylo zahozeno, protože se plánuje přechod na JIRA Cloud. Jako možné řešení planningu v google sheetu se jeví tempo planner. Nicméně toto se neví, kdy přesně bude. Do té doby 
+
+
+\subsection*{BambooHR Integration for Jira}
+BambooHR Integration for Jira is a software solution developed by New Verve Consulting and distributed as an add-on through the Atlassian Marketplace. It is designed to synchronize data between BambooHR and Jira. The integration is available for Jira server only. Jira cloud is in the works with an estimated delivery of spring 2021. The cost of this integration is divided into tiers based on the number of users. Our company falls into the 250 users tier which comes at a fixed cost of \$1,760.00 with one year of maintenance included.
+
+"When an employee requests time off in BambooHR, the app automatically records the request in Jira. This means that the teams can now consider employee time-off when scheduling work in Jira. It also means that scrum masters, project managers, and wider PMO are better informed and equipped to forecast accurate completion dates based on team capacity."\cite{bamboohr-jira-integration}
+
+The setup and installation process is fairly straightforward and well documented. To connect the two systems together, an administrator needs to download and install the add-on into Jira instance. Then, they create an API key to authenticate with BambooHR and input BambooHR subdomain to connect.\\
+
+\noindent The following options are available for import frequency:
+\begin{enumerate}[itemsep=0mm]
+    \item Daily at specified time
+    \item Hourly
+    \item Every 2, 4, 6, 12 hours
+    \item Cron expression \footnote{Cron is a software utility used to schedule procedures to run periodically at a specific time.}
+    \item No regular import
+\end{enumerate}
+
+Additionally, parameters like start date, year range and request types can also be set up. Another benefit of this solution is that it also integrates with Tempo Timesheets and can automatically create worklogs for approved time off requests.
+
+\subsection*{Tempo Planner}
+Tempo Planner is a planning tool that integrates into Jira in the same way as the previous product. Project managers, scrum masters and other employees can use it to plan work, see available capacity and reflect on planned vs actual time. The add-on is available for both Jira server and cloud. Since our company uses Jira server and has less than 250 employees, the cost for us is fixed at \$5,000.00 with one year of technical support.\\
+
+\noindent Feature highlights:
+\begin{enumerate}[itemsep=0mm]
+    \item Plan and approve work or request time from other teams
+    \item Access real-time overview of available resources
+    \item Account for time off and holidays
+    \item Compare planned vs actual to improve estimates and plans
+    \item Report on resource capacity to see booked and available capacity of employees
+\end{enumerate}
+
+
 \section{Calculating the AWU}
 
 \begin{figure}[ht]
@@ -350,69 +441,99 @@ Now that we have established the current state and analyzed what parts of the pr
     \label{fig:after_automation}
 \end{figure}
 
-\section{Solutions for requesting time off}
-Tady bude popsaná integrace včetně typů volna
-
-For this integration, we are looking to 
-
-First, we will have a look at some of the solutions that are currently available in the market and determine whether or not they are viable for our use case. To do this, we used Google search to look for the term: "Tempo Timesheets BambooHR integration". We investigated the following list of services:
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item blendr.io 
-    \item zapier
-    \item BambooHR Integration for Jira
-\end{itemize}
-After reviewing these products, we came to the conclusion that the first two would not be viable options. Blendr \cite{blendr} Zapier does provide a trigger for new time off, however, there is no way of dealing with the type of the request afterwards. Moreover, there was no action that would correspond to our requirement of adding time to specific ticket.\cite{zapier}
-
-\subsection*{BambooHR Integration for Jira}
-While there is a wide variety of solutions for API integrations, they tend to be very generic and provide limited options for customization. The closest we could get with an out of the box solution was to use plugin for Jira called: "BambooHR Integration for Jira" developed by New Verve Consulting.
-
-We analyzed this possibility and came to the conclusion that it is not viable for our use case, since we are using a different structure of ticketing.
-
-\subsection*{Custom API integration}
-The ideal solution to this problem seems to be a custom API integration. 
-\newline\newline
-Across both systems, the company is using four types of leaves:
-\begin{enumerate}
-    \setlength\itemsep{0em}
-    \item Holiday leave
-    \item Sick leave
-    \item Birthday leave
-    \item Special leave
-\end{enumerate}
-It is important that we keep these in mind, as they are the deciding factor for the solution we are eventually going to use. These types come into play later in the process, when accounting is being done. Hence, we cannot simply merge them into one leave.
-
-BambooHR is all-in-one HR software made for small and medium businesses. The software makes it easy to collect, maintain, and analyze employee data, on-board new employees, manage compensation, and develop your company culture.\cite{bambooHR}
-
 In BambooHR, we are looking for: 
 
 In the documentation, we were looking for an endpoint that would provide us with 
 The endpoint we are looking for is the "Time Off" endpoint.
 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{after_sys_integration.png}
-    \caption{Process after system integration}
-    \label{fig:after_sys_integration}
-\end{figure}
-
-To implement this integration, we can use our existing AWS infrastructure from our finance automation part. Here, we can create 
-
-First, we would create a lambda function that 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{delete_approved.png}
-    \caption{Approved request deletion}
-    \label{fig:delete_approved}
-\end{figure}
 \section{Summary}
 Now that we have all of the possible solutions we can compare them and determine which one of them will provide us with the highest amount of added value for the least amount of resources spent. Any of these three 
-
 Based on the comparisons we've we can now safely say that our initial hypothesis at the beginning of chapter \ref{hypothesis} was correct.
 
-\chapter{Business requirements}\label{hypothesis}
+\chapter{Common indicator}
+For us to be able to 
+Let us define our common indicator as a combination of time effort, costs and potential savings.
+Even though our processes overlap in some areas
+
+Because we are dealing with multiple processes, we need to establish some common indicator to indicate how the changes affect our processes and what value they bring.
+
+\section*{Time effort}
+The first component of our indicator is time. 
+
+
+In of these processes were being carried out manually by employees. This leads us to our first part of the indicator, time.
+More specifically, two types of time:
+An argument could be made against this that certain employees work faster than others and it might even sound right.
+~\\\newline
+We can see two concepts emerging from analyzing this process:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item How long does the task take to complete?
+    \item How much time can we save if we don't do it?
+\end{itemize}
+ 
+
+\section*{Costs}
+While the time effort can sometimes get unpredictable, we would generally not expect employee wage to fluctuate 
+
+\noindent We have two types of costs:
+\begin{itemize}[itemsep=0mm]
+    \item Fixed - 
+    \item Variable - employee salary
+\end{itemize}
+\section*{Potential gains}
+In comparison to costs, gains are always potential, until they are realized. 
+
+
+\section{Mapping indicator to processes}
+\subsection*{Calculating the AWU}
+
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+\hline
+What & Before & After \\
+\hline
+Time spent & 1 & Janáček\\
+Fixed costs & 2 & Smetana\\
+Variable costs & 3 & Janáček\\
+Cost per process execution & 2 & Janáček\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Requesting time off}
+
+For 214 employees there are 4 HR assistants whose responsibility is to take care . They are divided by locations so that each assistant has approximately equal number of employees. This makes 214 / 4 $\approx$ 53.
+
+Since we cannot disclose exact salaries, we take 
+
+\noindent We have two types of costs:
+\begin{itemize}[itemsep=0mm]
+    \item 2/4 assistants are from Czech with salary range between 29 - 57k CZK/month
+    \item 1/4 is from the Netherlands with salary between 
+    \item 1/4 is from the UK
+\end{itemize}
+\section*{Potential gains}
+In comparison to costs, gains are always potential, until they are realized. 
+
+\section{Evaluation}
+To recapitulate, we have identified three different indicators. While they do provide some insight into which only when combined, create a meaningful and concise interpretation of 
+
+\chapter{Systems integration}
+
+\chapter{Process automation}
+Now, we will describe the implementation. The chapter can be divided into four main sections:
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item Technologies
+    \item Infrastructure and integrations
+    \item Web application
+    \item Data manipulations
+\end{enumerate}
+
+Because we are creating an application that is both front-facing and back-end oriented at the same time, it is important that we choose technologies that are mature and up to date.
+When it comes to creating user interfaces, the ease of use and simplicity is very important both for the user and the developer. Because of this, I chose to use AWS Amplify in combination with GatsbyJS and React. Together, these three technologies make up the core of the front-end application. Amplify provides the infrastructure, GatsbyJS the routing and site generation and React ties it all together. Last but not least, we also want for the application to look at least somewhat decent and so we will also use component libraries to achieve a flat and pleasing look, stylized in company colors.
+\section{Requirements}\label{hypothesis}
 ---(obsolete Intro)---
 In the following paragraphs, the EU funding programmes domain is presented. The purpose of this is to familiarize the reader with the domain, so they can better understand the added value this thesis aims to provide. At this point we would like to state the hypothesis that we think that the winner will be the implementation of automating the task of calculating the Annual Work Unit.
 \par
@@ -424,7 +545,7 @@ In the first section, the EU funding programmes are introduced. Here, general mo
 \newpage
 The EU funding programmes are funding opportunities created by the European Commission to help micro, small and medium-sized enterprises (SMEs) gain access to cheap capital through grants, loans and guarantees. The companies can also bid for contracts to provide goods and services.
 The specific project this thesis deals with is: "The company Mautilus, s.r.o. is implementing the project \textit{"New Apps Development in co. Mautilus"}, the goal of which is to develop multi-screen OTT (Over-the-top) applications designated for wide range of platforms that allow to watch video content." \cite{mau-eu-subsidy}
-\section{(obsolete) Motivation for funding programmes}\label{motivation}
+\subsection{(obsolete) Motivation for funding programmes}\label{motivation}
 In this chapter, we will have a look at the motivations of both parties, the beneficiaries and benefactors. The former of which is our chosen company.
 The Czech Civil Code considers: "A person who, on his own account and responsibility, independently carries out a gainful activity in the form of a trade or in a similar manner with the intention to do so consistently for profit is considered, with regard to this activity, to be an entrepreneur."\cite{entrepreneur-law}
 \par
@@ -442,7 +563,7 @@ From the first part, we can see that Mr. Juncker has a genuine interest in enabl
 
 To summarize, we can say that we see a genuine effort towards allocating public money in a fair and reasonable manner that is sustainable over the long term and helps small businesses grow into flourishing enterprises that solve real world problems. Without a doubt, this is a good enough motivation for such funding programmes to exist.
 
-\section{Company size}
+\subsection{Company size}
 \noindent
 According to the Commision regulation No.651/2014 \cite[page~70]{eu-commision-regulation} issued by the European Comission, the companies are divided into three categories according to the number of employees and annual turnover:
 \begin{enumerate}
@@ -458,15 +579,15 @@ According to the Commision regulation No.651/2014 \cite[page~70]{eu-commision-re
 \end{enumerate}
 These figures apply to individual companies only. A small company might not qualify for SME status if it has significant additional resources because it is part of a larger group. \cite{eu-commision-regulation}
 It is imperative for a company applying for a funding programme to fall into one of these three categories. If they don't, they are rejected. Our company falls into the small enterprise category.
-\section{Job position relevance}
+\subsection{Job position relevance}
 When applying for a programme, the relevance of a job position with respect to the project needs to be taken into account. Non-relevant employees are not accounted for in the AWU calculation. Nevertheless, it is useful to have this information.
 
 It is also important to note that only employees working in the office that is listed in the application can be taken into account.\cite[page~30]{czech-rules}
-\section*{Relevant (R)}
+\subsection*{Relevant (R)}
 Employees, whose qualification and job are directly related to the project in question. (i.e. developers in our case)\cite[page~30]{czech-rules}
-\section*{Non-relevant (N)}
+\subsection*{Non-relevant (N)}
 All other employees fall into this category. (i.e. management, sales, accountants etc.)\cite[page~30]{czech-rules}
-\section{Annual work unit (AWU)}
+\subsection{Annual work unit (AWU)}
 We have established that in order to be eligible for funding, a company has to have a certain amount of employees. Knowing only this would not suffice, as we need to take into account the time our employees have really worked. To enable this fine-grained distinction, European Union introduces the AWU.
 \newline\newline
 The European Comission defines the AWU as:
@@ -484,22 +605,8 @@ The staff consists of:
     \item owner-managers;
 \end{enumerate}
 Apprentices or students engaged in vocational training with an apprenticeship or vocational training contract are not included as staff. The duration of maternity or parental leaves is not counted. \cite{eu-commision-regulation}
-
-\chapter{Implementation}
-Now, we will describe the implementation. The chapter can be divided into four main sections:
-\begin{enumerate}
-    \setlength\itemsep{0em}
-    \item Technologies
-    \item Infrastructure and integrations
-    \item Web application
-    \item Data manipulations
-\end{enumerate}
-
-Because we are creating an application that is both front-facing and back-end oriented at the same time, it is important that we choose technologies that are mature and up to date.
-When it comes to creating user interfaces, the ease of use and simplicity is very important both for the user and the developer. Because of this, I chose to use AWS Amplify in combination with GatsbyJS and React. Together, these three technologies make up the core of the front-end application. Amplify provides the infrastructure, GatsbyJS the routing and site generation and React ties it all together. Last but not least, we also want for the application to look at least somewhat decent and so we will also use component libraries to achieve a flat and pleasing look, stylized in company colors.
-
 \section{Technologies}
-The company is executing on it's mission to: "Innovate the way video-lovers discover, watch, and experience great content."\cite{24iMission} by using the latest and greatest technologies that are available on the market. To build it's infrastructure and services, the company has chosen to use Amazon Web Services (AWS). Because of this, it only made sense to also use AWS in this thesis.
+The company is executing on it's mission to: "Innovate the way video-lovers discover, watch, and experience great content."\cite{24iMission} by using the latest and greatest technologies that are available on the market. To build it's infrastructure and services, the company uses Amazon Web Services (AWS). Because of this, it only made sense to also use AWS in this thesis.
 
 The intent of this chapter is to provide a brief overview of the core technologies used in this thesis. More importantly, however, this list serves to demonstrate how these technologies have helped to achieve the thesis goals.
 
@@ -523,12 +630,12 @@ I decided to use React to create the front end of the application mainly because
 
 In such a dynamic and ever changing environment, which information technology undoubtedly is, more and more companies are placing their emphasis on security, robustness and scalability of their IT systems. These are some of the attributes, which can be attained by migrating data to and consuming computational power from a cloud based solution thanks to it's distributed and modular architecture.
 
-\section{Infrastructure and integrations}
-In this section, we will briefly outline our environments and the integrations between them.
-\subsection{Front-end environment}
+\section{Infrastructure}
+In this section, we will briefly outline our infrastructure and environments.
+\subsection*{Front-end environment}
 The front-end of our application resides in the cloud that is managed by AWS Amplify. It automatically provisions an S3 bucket to store the source files. Then, a connection 
 We have our GitHub repository connected to this environment. Every time a pull request is merged into the master branch, a deployment of 
-\subsection{Back-end environment}
+\subsection*{Back-end environment}
 The back-end consists of 4 services:
 \begin{enumerate}
     \setlength\itemsep{0em}
@@ -538,7 +645,7 @@ The back-end consists of 4 services:
     \item S3 Storage
 \end{enumerate}
 \section{Web application}
-As we have already established, the main goal of this thesis is to automate a process of caltulating the AWU. To achieve this goal, we first need to be able to gather the data from the financial department. We will do this by providing them with a web application that fulfills all of the functional requirements described in the analysis.
+To automate the process of calculating the AWU, we are going to create a web application. To achieve this goal, we first need to be able to gather the data from the financial department. We will do this by providing them with a web application that fulfills all of the functional requirements described in the analysis.
 To accommodate for user authentication, we leverage 
 
 \subsection{Uploading a file}
@@ -666,7 +773,8 @@ Table This component takes on the following form and can be combined into many d
 </Table>
 \end{lstlisting}
 
-
+\subsection{Removing a file}
+Dodělat!!!!!!
 
 \section{Data manipulations}
 To 
@@ -762,7 +870,6 @@ As a part of this thesis, we have implemented automation for calculating the AWU
 When it comes to the integration of Jira Temposheets and BambooHR, there is some attentiveness for this to be implemented, but because the current solution to the problem doesn't create any necessary costs, there is little to interest in doing so early.
 
 Finally, no decision has yet been made on the matter of the tax forms process, as the department has recently undergone major restructuring. From a financial perspective, the tax forms process makes more sense to take precedence, as accounting department positions are generally better paying than assistants. Moreover, there is clearly a high amount of workload that could be better spent elsewhere, should this integration materialize.
-\chapter{Process automation evaluation}
 \chapter{Conclusion}
 The goal of this thesis was to analyze, model and identify possible optimizations and automations of three processes within the company. To better understand the value hidden underneath the possible process automations, we have developed a common indicator. This indicator has proved to be successful at determining which process to automate.
 
